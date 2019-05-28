@@ -1,0 +1,128 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Welcome to Glitch!</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">    
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/client.js" defer></script>
+    <script src="ejs.min.js"></script>  
+
+  </head>
+  <body>
+    <div id="all">
+    <header>
+      <h1>
+        Plans tonight?
+      </h1>
+    </header>
+
+    <main>
+      <p class="ic"><i class="fa fa-map-marker"></i> <i class="fa fa-taxi"></i> <i class="fa fa-glass"></i></p>
+      
+      <div class="content">
+      
+      <p class="desc">See which locations are available and RSVP ahead of time. <br /> Remember: stay safe and be responsible.</p>
+      
+      <form method="POST">
+        <input name="dream" type="text" maxlength="100" id="dream" placeholder="Where are you at?"   <% if(display==true){ %>  value= "<%=loc %>" <% } %>>
+        <br />
+        <button type="submit" id="submit">Submit</button>
+        <a id="link" href="https://shaded-jacket.glitch.me/logout">Logout</a>
+      </form>
+
+      </div>
+      
+      <% if(display==true){ %>
+      <div class="answer container">
+       <ul>
+      <% if(ans.businesses.length<1){ %> 
+         
+         <p class="empty">
+           No results
+         </p>
+         
+      <% } %>
+      <% for(var i=0; i<ans.businesses.length; i++){ %>    
+        <li class="on"> 
+           <p class="name">
+             <%= ans.businesses[i].name %>
+           </p>
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 me">             
+         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 me1">
+           <img src="<%= ans.businesses[i].image_url %>" onerror="this.src='https://cdn.pixabay.com/photo/2017/02/01/00/26/cranium-2028555_960_720.png'" alt="image" width= "150px">
+         </div>
+          
+         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 me2">
+           <p class="status">
+              Status: <b><%if(ans.businesses[i].is_closed==false){ %>OPEN<% } %><%if(ans.businesses[i].is_closed==true){ %>CLOSED<% } %></b>
+           </p>
+           <p class="status">
+              Rating: <b><%= ans.businesses[i].rating %></b>/5
+           </p>
+           <p class="status">
+              Reviews: <b><%= ans.businesses[i].review_count %></b>
+           </p>
+           <p class="status">
+              Price: <b><%= ans.businesses[i].price %></b>
+           </p> 
+           <p class="status">
+              Location: <b><%= ans.businesses[i].location.address1 %> <%= ans.businesses[i].location.city %>, <%= ans.businesses[i].location.state %> <%= ans.businesses[i].location.zip_code %></b>
+           </p>
+           <p class="status">
+              Tags: <b><% for(var a=0; a<ans.businesses[i].categories.length; a++){%><%= ans.businesses[i].categories[a]['title'] %> <% }%></b>
+           </p>             
+           <p class="status">
+              Phone Number: <b><%= ans.businesses[i].display_phone %></b>
+           </p> 
+           <p class="status">
+              <a href="<%= ans.businesses[i].url %>">Website</a>
+           </p>               
+         </div>
+         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 me3">
+          <button>
+          <% if(and.indexOf(ans.businesses[i].id)<0){ %>  <a style="color:white" href="https://shaded-jacket.glitch.me/views/add?id=<%= ans.businesses[i].id %>">RSVP</a> <% } %>  <% if(and.indexOf(ans.businesses[i].id)>=0){ %><a style="color:white" href="https://shaded-jacket.glitch.me/views/remove?id=<%= ans.businesses[i].id %>">Confirmed</a><% } %> 
+           </button>
+    <!--     <%= ans.businesses[i].id %>            -->
+         </div>
+         </div>
+           <p class="no">
+             <%= ans.businesses[i].name %>
+           </p>            
+        </li>            
+      <% } %>          
+       </ul>
+        
+      </div>  
+      <% } %>
+      
+    </main>
+
+    <footer>
+      <p class="copy">
+        &copy 2019 shaded-jacket.glitch.me
+      </p>
+    </footer>
+
+
+      
+</div>
+  </body>
+</html>
