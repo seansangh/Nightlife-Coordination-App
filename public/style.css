@@ -1,0 +1,148 @@
+/* styles */
+/* called by your view template */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+
+}
+
+#all{
+  background: maroon;
+  min-height:100vh;
+  margin-top: -20px;
+}
+
+.empty{
+  text-align: center;
+  padding-top: 15px;
+  color: gray;
+}
+
+h1 {
+  text-align: center;
+  color: white !important;
+  padding-top: 35px;
+  font-family: Times !important;
+  font-size: 60px !important;
+}
+
+.ic{
+  text-align: center;
+  color: white;
+  font-size: 60px;
+}
+
+.copy{
+ padding-left: 25px;
+ color: gray;
+}
+
+.content{
+ text-align: center;
+}
+
+.desc{
+  font-size: 18px;
+  font-family: Times;
+  color: white;
+}
+
+.answer{
+  background: white;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.answer ul{
+  list-style-type: none;
+  display: inline-block;
+}
+
+.answer li{
+  min-height: 120px;
+  border-bottom: 1px dotted silver;
+}
+
+.no{
+  color: white;
+}
+
+.name{
+  color: navy; 
+  font-weight: bold; 
+  font-size: 23px; 
+  font-family: Times;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+#link{
+  margin-left: 15px;
+  color: black;
+}
+
+#desc2{
+  margin-top: 50px;
+}
+.answer ul{
+  width: 95%; 
+  min-width: 650px;
+}
+
+form {
+  margin-bottom: 25px;
+  padding: 15px;
+  bfackground-color: silver;
+  display: inline-block;
+  width: 100%;
+  max-width: 340px;
+  border-radius: 3px;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+button {
+  font-size: 16px;
+  border-radius: 3px;
+  background-color: maroon;
+  border: 1px solid grey;
+  box-shadow: 0px 0px 2px white;  
+  color: white !important;
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: 2px 2px silver;
+  
+}
+
+button:active {
+  box-shadow: none;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px dotted gray;
+}
