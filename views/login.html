@@ -1,0 +1,88 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Welcome to Glitch!</title>
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">    
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/client.js" defer></script>
+    <script src="ejs.min.js"></script>  
+    <script>
+      if('<%=display%>'=='1'){
+        alert('Incorrect login information.')
+      }
+      if('<%=display%>'=='2'){
+        alert('Email already exists.')
+      }      
+    </script>
+  </head>
+  <body>
+    <div id="all">
+    <header>
+      <h1>
+        Plans tonight?
+      </h1>
+    </header>
+
+    <main>
+      <p class="ic"><i class="fa fa-map-marker"></i> <i class="fa fa-taxi"></i> <i class="fa fa-glass"></i></p>
+      
+      <div class="content">
+       <form method="POST">     
+        <p class="desc"><b>Login:</b> enter your email address and password below. <br /> </p>
+      
+
+        <input name="dream1" type="email" maxlength="100" id="dream1" placeholder="email@address.com">
+         <br />
+        <input name="dream12" type="text" maxlength="100" id="dream12" placeholder="password">
+         <br />
+        <button type="submit" id="submit">Submit</button>
+        <a id="link" href="https://shaded-jacket.glitch.me/">Go Back</a>
+         
+        <p class="desc" id="desc2"><b>Create an Account:</b> enter the requisite information below to create an account. <br /> </p>
+        <input name="dream2" type="text" maxlength="100" id="dream2" placeholder="Name">
+        <br />
+        <input name="dream3" type="email" maxlength="100" id="dream3" placeholder="Email Address">
+        <br />
+        <input name="dream32" type="text" maxlength="100" id="dream32" placeholder="Password">
+        <br />         
+        <input name="dream4" type="text" maxlength="100" id="dream4" placeholder="Location">
+        <br />         
+        <button type="submit" id="submit">Submit</button>
+        <a id="link" href="https://shaded-jacket.glitch.me/">Go Back</a>         
+      </form>
+
+      </div>
+      
+     
+      
+    </main>
+
+    <footer>
+      <p class="copy">
+        &copy 2019 shaded-jacket.glitch.me
+      </p>
+    </footer>
+
+
+      
+</div>
+  </body>
+</html>
